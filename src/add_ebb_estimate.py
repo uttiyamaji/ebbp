@@ -10,11 +10,11 @@ import pandas as pd
 from ebb_fit_prior import ebb_fit_prior, augment
 
 
-def add_ebb_estimate(x, n, data):
+def add_ebb_estimate(x, n, data, method = 'mm'):
     
     # get the estimate and the CIs
     # TO DO: which method to choose? mm or mle?
-    est = ebb_fit_prior(x, n)
+    est = ebb_fit_prior(x, n, method)
     
     # augment it with the data
     return augment(est, data, x, n)
