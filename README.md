@@ -3,7 +3,7 @@
 It's an unofficial implementation of the R package ebbr(Empirical Bayes on the Binomial in R) \
 visit http://varianceexplained.org/r/ebbr-package/ and https://github.com/dgrtwo/ebbr
 
-## Usage
+## Usage so far
 
 ```python
 import ebbp
@@ -26,7 +26,13 @@ pr_est.plot()
 aug_df = augment(pr_est, dt, dt.S, dt.T)
 print(aug_df.head(10))
 
+# this previous can be done using 
+aug_df = add_ebb_estimate(dt.S, dt.T, dt, 'mm')
+
+# if it is required to update the prior only on a subset of the data, then the previous two functions have to be used
+
 ```
+## Things to add
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
