@@ -13,7 +13,6 @@ from ebb_fit_prior import ebb_fit_prior, augment
 def add_ebb_estimate(x, n, data, method = 'mm'):
     
     # get the estimate and the CIs
-    # TO DO: which method to choose? mm or mle?
     est = ebb_fit_prior(x, n, method)
     
     # augment it with the data
@@ -28,7 +27,7 @@ if __name__ == '__main__':
     p = x/n
     dt = pd.DataFrame({'H':x, 'AB': n, 'est':p})
     
-    aug_df = add_ebb_estimate(dt.H, dt.AB, dt)
+    aug_df = add_ebb_estimate(dt.H, dt.AB, dt, method = 'mm')
     print(aug_df.head(10))
     
     
