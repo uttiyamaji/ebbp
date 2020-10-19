@@ -11,7 +11,7 @@ import numpy as np
 import pandas as pd
 
 # random data
-x = np.randdom.randint(0,100,100)
+x = np.random.randint(0,100,100)
 n = 100
 p = x/n
 dt = pd.DataFrame({'S":x, 'T':n, 'est':p})
