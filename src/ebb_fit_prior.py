@@ -65,10 +65,11 @@ def ebb_fit_prior(x, n, method = 'mm', start = (0.5,0.5)):
             
         
         # optimization function: over a series of params, optimise likelihood
-        outp = minimize(likelihood, x0 = start, method = 'BFGS')
-        fitted_prior = Beta(outp.x[0], outp.x[1])
+        # outp = minimize(likelihood, x0 = start, method = 'BFGS')
+        # fitted_prior = Beta(outp.x[0], outp.x[1])
         
-                
+        a,b,*ls = beta_dist.fit(p)
+        fitted_prior = Beta(a,b)
         pass
     else:
         return ('Method should be MM or MLE')
