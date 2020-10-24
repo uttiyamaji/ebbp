@@ -41,7 +41,7 @@ class Beta:
     
     
     
-def ebb_fit_prior(x, n, method = 'mm', start = np.nan):
+def ebb_fit_prior(x, n, method = 'mm', start = (0.5,0.5)):
     p = x/n
     if (method == 'mm'):
         mu, sig = np.mean(p), np.var(p)
@@ -54,15 +54,15 @@ def ebb_fit_prior(x, n, method = 'mm', start = np.nan):
     elif (method == 'mle'):
         
         # starting value
-        if (np.isnan(start)):
-            mm_est = ebb_fit_prior(x, n, 'mm')
-            start = (mm_est.alpha, mm_est.beta)
-            #print(start)
+        # if (np.isnan(start)):
+        #     mm_est = ebb_fit_prior(x, n, 'mm')
+        #     start = (mm_est.alpha, mm_est.beta)
+        #     #print(start)
         
         # likelihood function: f(a, b)
         def likelihood(pars):
-            f = np.sum(beta_dist.pdf(p, pars[0], pars[1]))
-            return -f
+            return (-np.sum(beta_dist.pdf(p, pars[0], pars[1])))
+            
         
         # optimization function: over a series of params, optimise likelihood
         outp = minimize(likelihood, x0 = start, method = 'BFGS')
@@ -94,7 +94,7 @@ def augment(prior, data, x, n):
     post_u = beta_dist.ppf(0.975, posterior.alpha, posterior.beta)
     
     # add the column
-    new_cols = pd.DataFrame({'eb_est': eb_est, 'cred_lower': post_l, 'cred_upper':post_u})
+    new_cols = pd.DataFrame({'alpha':post_alpha, 'beta': post_beta, 'eb_est': eb_est, 'cred_lower': post_l, 'cred_upper':post_u})
     aug_df = pd.concat([data, new_cols], axis = 1)
     
     return aug_df
@@ -108,25 +108,25 @@ def check_fit(aug_df):
     plt.show()
 
 if __name__ == '__main__':  
-    x = np.random.randint(0,100,100)
-    n = 100
+    x = np.random.randint(0,50,20)
+    n = np.random.randint(50,100, 20)
     p = x/n
     dt = pd.DataFrame({'S':x, 'Tot':n, 'est':p})
         
-    est1 = ebb_fit_prior(x,n)
-    #print(est1)
-    #est1.plot(x, n)
+    est1 = ebb_fit_prior(x,n, 'mm')
+    print(est1)
+    est1.plot(x, n)
     
     new_dt = augment(est1, dt, dt.S, dt.Tot)
     print(new_dt.head(10))
-    #check_fit(new_dt)
-    
-    
-    
-    #est1.plot()
-    # print('=============================')
-    # est2 = ebb_fit_prior(x,n,'mle')
-    # print(est2)
-    # est2.plot(x,n)
+    check_fit(new_dt)
+       
+    print('=============================')
+    est2 = ebb_fit_prior(x,n,'mle')
+    print(est2)
+    est2.plot(x,n)
+    new_dt = augment(est2, dt, dt.S, dt.Tot)
+    print(new_dt.head(10))
+    check_fit(new_dt)
     
 
