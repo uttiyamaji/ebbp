@@ -18,17 +18,17 @@ p = x/n
 dt = pd.DataFrame({'S":x, 'T':n, 'est':p})
 
 # fit the prior over the data using Maximum Likelihood Estimate or Method of Moments 
-pr_est = ebb_fit_prior(x, n, dt, method = 'mle')
+pr_est = ebbp.ebb_fit_prior(x, n, dt, method = 'mle')
 
 # plot the prior distribution curve over the histogram
 pr_est.plot()
 
 # add the shrinkage estimate from the posterior, 95% credible intervals in the dataframe
-aug_df = augment(pr_est, dt, dt.S, dt.T)
+aug_df = ebbp.augment(pr_est, dt, dt.S, dt.T)
 print(aug_df.head(10))
 
 # this previous can be done using 
-aug_df = add_ebb_estimate(dt.S, dt.T, dt, 'mm')
+aug_df = ebbp.add_ebb_estimate(dt.S, dt.T, dt, 'mm')
 
 # if it is required to update the prior only on a subset of the data, then the previous two functions have to be used
 
