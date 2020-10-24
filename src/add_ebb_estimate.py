@@ -25,9 +25,9 @@ if __name__ == '__main__':
     x = np.random.randint(0,100,100)
     n = 100
     p = x/n
-    dt = pd.DataFrame({'H':x, 'AB': n, 'est':p})
+    dt = pd.DataFrame({'S':x, 'T': n, 'est':p})
     
-    aug_df = add_ebb_estimate(dt.H, dt.AB, dt, method = 'mm')
+    aug_df = add_ebb_estimate(dt.S, dt.T, dt, method = 'mm')
     print(aug_df.head(10))
     
     

@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Created on Sun Oct 18 01:39:56 2020
+Created on Sat Oct 24 19:15:03 2020
 
 @author: uttiya
 """
 
-def ebb_fit_estimate():
+def ebb_fit_mixture():
     pass
+

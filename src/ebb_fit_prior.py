@@ -18,6 +18,7 @@ import matplotlib.pyplot as plt
 
 @dataclass
 class Beta:
+    """ minimal Beta class, for prior and posterior objects"""
     alpha: float
     beta: float
     
@@ -25,20 +26,18 @@ class Beta:
         return beta_dist.pdf(x, self.alpha, self.beta)
         pass
     
-    def cdf(self, x):
-        return beta_dist.ppf(x, self.alpha, self.beta)
-    
-    
+        
     def plot(self, x, n):
-        """ plots the prior pdf density over the histogram"""
+        """ plots the prior pdf density over the data histogram"""
+        # add various plotting args
         x_ax = np.linspace(0,1,1000)
         rv = beta_dist(self.alpha, self.beta)
         p = x/n
         plt.hist(p, density = True)
         plt.plot(x_ax, rv.pdf(x_ax))
-        plt.title(f'Beta with {self.alpha} and {self.beta}')
+        plt.title(f'Beta({self.alpha.round(2)},{self.beta.round(2)})')
         plt.show()
-    
+           
     
     
     
@@ -67,12 +66,12 @@ def ebb_fit_prior(x, n, method = 'mm', start = np.nan):
         
         # optimization function: over a series of params, optimise likelihood
         outp = minimize(likelihood, x0 = start, method = 'BFGS')
-        fitted_prior = Betaa(outp.x[0], outp.x[1])
+        fitted_prior = Beta(outp.x[0], outp.x[1])
         
                 
         pass
     else:
-        return ('wrong method')
+        return ('Method should be MM or MLE')
     
     return fitted_prior
     
@@ -104,20 +103,25 @@ def augment(prior, data, x, n):
 
 
     
-    
+def check_fit(aug_df):
+    plt.plot(aug_df.est, aug_df.eb_est)
+    plt.show()
 
 if __name__ == '__main__':  
     x = np.random.randint(0,100,100)
     n = 100
     p = x/n
-    dt = pd.DataFrame({'H':x, 'AB': n, 'est':p})
+    dt = pd.DataFrame({'S':x, 'Tot':n, 'est':p})
         
     est1 = ebb_fit_prior(x,n)
-    print(est1)
+    #print(est1)
     #est1.plot(x, n)
     
-    new_dt = augment(est1, dt, dt.H, dt.AB)
+    new_dt = augment(est1, dt, dt.S, dt.Tot)
     print(new_dt.head(10))
+    #check_fit(new_dt)
+    
+    
     
     #est1.plot()
     # print('=============================')
