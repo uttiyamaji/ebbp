@@ -17,9 +17,17 @@ import matplotlib.pyplot as plt
 #prior = namedtuple('prior', ['alpha','beta'])
 
 @dataclass
-class prior:
+class Beta:
     alpha: float
     beta: float
+    
+    def pdf(self, x):
+        return beta_dist.pdf(x, self.alpha, self.beta)
+        pass
+    
+    def cdf(self, x):
+        return beta_dist.ppf(x, self.alpha, self.beta)
+    
     
     def plot(self, x, n):
         """ plots the prior pdf density over the histogram"""
@@ -41,7 +49,7 @@ def ebb_fit_prior(x, n, method = 'mm', start = np.nan):
         a = ((1-mu)/sig - 1/mu)*mu**2
         b = a*(1/mu - 1)
         
-        fitted_prior = prior(a,b)
+        fitted_prior = Beta(a,b)
                 
         pass
     elif (method == 'mle'):
@@ -59,7 +67,7 @@ def ebb_fit_prior(x, n, method = 'mm', start = np.nan):
         
         # optimization function: over a series of params, optimise likelihood
         outp = minimize(likelihood, x0 = start, method = 'BFGS')
-        fitted_prior = prior(outp.x[0], outp.x[1])
+        fitted_prior = Betaa(outp.x[0], outp.x[1])
         
                 
         pass
@@ -72,15 +80,15 @@ def ebb_fit_prior(x, n, method = 'mm', start = np.nan):
     pass 
 
 
-def augment(prior_dist, data, x, n):
+def augment(prior, data, x, n):
     
     # compute the estimates 
-    post_alpha = prior_dist.alpha + x
-    post_beta = prior_dist.beta + n - x 
+    post_alpha = prior.alpha + x
+    post_beta = prior.beta + n - x 
     
-    eb_est = (x + prior_dist.alpha)/(n + prior_dist.alpha + prior_dist.beta)
+    eb_est = (x + prior.alpha)/(n + prior.alpha + prior.beta)
     
-    posterior = prior(post_alpha, post_beta)
+    posterior = Beta(post_alpha, post_beta)
     
     # compute the posterior credible intervals 
     post_l = beta_dist.ppf(0.025, posterior.alpha, posterior.beta)
