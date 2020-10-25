@@ -1,19 +1,12 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-Created on Sun Oct 18 01:37:29 2020
-
-@author: uttiya
-"""
 import numpy as np
 import pandas as pd
-from ebb_fit_prior import ebb_fit_prior, augment
+from ebb_fit_prior import ebb_fit_prior as fit, augment
 
 
 def add_ebb_estimate(x, n, data, method = 'mm'):
     
     # get the estimate and the CIs
-    est = ebb_fit_prior(x, n, method)
+    est = fit(x, n, method)
     
     # augment it with the data
     return augment(est, data, x, n)
@@ -25,12 +18,9 @@ if __name__ == '__main__':
     x = np.random.randint(0,100,100)
     n = 100
     p = x/n
-    dt = pd.DataFrame({'S':x, 'T': n, 'est':p})
+    dt = pd.DataFrame({'S':x, 'Tot': n, 'est':p})
     
-    aug_df = add_ebb_estimate(dt.S, dt.T, dt, method = 'mm')
+    aug_df = add_ebb_estimate(dt.S, dt.Tot, dt, method = 'mm')
     print(aug_df.head(10))
     
-    
-    
-    
-    
+   

@@ -34,6 +34,8 @@ aug_df = ebbp.add_ebb_estimate(dt.S, dt.T, dt, 'mm')
 
 ```
 ## Things to add
+The routine for fitting the mixture of priors is going to be very useful. It's a bit tricky to implement 
+
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
