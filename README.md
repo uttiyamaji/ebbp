@@ -1,6 +1,6 @@
 # ebbp : Empirical Bayes on the Binomial in Python
 
-It's an unofficial Python implementation of the R package ebbr(Empirical Bayes on the Binomial in R) by David Robinson\
+I have tried to implement the R package __ebbr__ (Empirical Bayes on the Binomial in R, by David Robinson) in Python. 
 Please visit http://varianceexplained.org/r/ebbr-package/ to get the idea about what the package does and https://github.com/dgrtwo/ebbr for the R implementation
 
 ## Usage so far
