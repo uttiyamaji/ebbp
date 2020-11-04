@@ -12,7 +12,7 @@ with open("README.md","r") as fh:
     long_description = fh.read()
     
 setuptools.setup(
-    name = "ebbp2",
+    name = "ebbp",
     version = "0.1",
     author = "Uttiya Maji",
     author_email = "iuttiya@gmail.com",
