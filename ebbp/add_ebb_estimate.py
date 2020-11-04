@@ -1,3 +1,7 @@
+"""
+one function that fits the prior from data and augments the estimates in the dataframe
+"""
+
 import numpy as np
 import pandas as pd
 

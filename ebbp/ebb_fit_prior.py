@@ -1,4 +1,11 @@
+"""
+ebb_fit_prior  fits a Beta prior estimating the params from the data using 
+method of moments and MLE estimates
+augment : given data and prior, computes the shrinked estimate, credible intervals and 
+augments those in the given dataframe
+check_fit : plots the true average and the shrinked average
 
+"""
 
 import numpy as np     
 import pandas as pd
