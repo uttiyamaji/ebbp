@@ -3,7 +3,7 @@
 import numpy as np     
 import pandas as pd
 from scipy.stats import beta as beta_dist
-from scipy.optimize import minimize
+
 from dataclasses import dataclass
 
 import matplotlib.pyplot as plt

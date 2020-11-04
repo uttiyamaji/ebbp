@@ -3,19 +3,13 @@
 """ adding __init__() for making a directory"""
 
 
-<<<<<<< HEAD
-from ebbp.src.ebb_fit_prior import ebb_fit_prior, augment
-from ebbp.src.add_ebb_estimate import add_ebb_estimate
 
-
-=======
 #from src.ebb_fit_prior import ebb_fit_prior, augment
 #from src.add_ebb_estimate import add_ebb_estimate
 
 # tinygrad style imports 
 from .ebb_fit_prior import ebb_fit_prior, augment
 from .add_ebb_estimate import add_ebb_estimate
->>>>>>> fix_imports
 
 # #ebb_fit_prior()
 

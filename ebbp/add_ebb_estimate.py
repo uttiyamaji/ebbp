@@ -1,10 +1,7 @@
 import numpy as np
 import pandas as pd
-<<<<<<< HEAD
-from ebbp.src.ebb_fit_prior import ebb_fit_prior as fit, augment
-=======
+
 from .ebb_fit_prior import ebb_fit_prior as fit, augment
->>>>>>> fix_imports
 
 
 def add_ebb_estimate(x, n, data, method = 'mm'):
