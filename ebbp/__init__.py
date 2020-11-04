@@ -7,8 +7,8 @@
 #from src.add_ebb_estimate import add_ebb_estimate
 
 # tinygrad style imports 
-#import src.ebb_fit_prior
-#import src.add_ebb_estimate
+from .ebb_fit_prior import ebb_fit_prior, augment
+from .add_ebb_estimate import add_ebb_estimate
 
 # #ebb_fit_prior()
 
