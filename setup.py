@@ -12,8 +12,8 @@ with open("README.md","r") as fh:
     long_description = fh.read()
     
 setuptools.setup(
-    name = "ebbp",
-    version = "0.2",
+    name = "ebbp2",
+    version = "0.1",
     author = "Uttiya Maji",
     author_email = "iuttiya@gmail.com",
     description = "Empirical Bayes for the Binomial in Python",
