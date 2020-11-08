@@ -13,7 +13,7 @@ This was to learn more about how packaging works in Python
 pip install ebbp
 ```
 ### Usage so far
-Fits Beta priors from data, computes shrinkage estimates, credible intervals, adds those to the dataset
+Fit Beta priors from data, compute shrinkage estimates, credible intervals, add those to the dataset
 
 ### TODO
 
