@@ -1,15 +1,29 @@
 # ebbp : Empirical Bayes on the Binomial in Python
 
 I have tried to implement the R package __ebbr__ (Empirical Bayes on the Binomial in R, by David Robinson) in Python. 
-Please visit http://varianceexplained.org/r/ebbr-package/ to get the idea about what the package does and https://github.com/dgrtwo/ebbr for the R implementation
+Please visit 
+* http://varianceexplained.org/r/ebbr-package/ to get the idea about what the package does and
+* https://github.com/dgrtwo/ebbr for the R implementation
 
-## Usage so far
-Only the functions for fitting a Beta prior from data, computing shrinkage estimates, credible intervals and some plots have been done. 
+This was to learn more about how packaging works in Python
 
+### Installation
 
-## Contributing
+```bash
+pip install ebbp
+```
+### Usage so far
+Fits Beta priors from data, computes shrinkage estimates, credible intervals, adds those to the dataset
+
+### TODO
+
+* Mixture of Beta priors 
+* Extend to Multinomial-dirichlet models?
+* Priors other than Beta, fit using MCMC
+
+### Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
 
-## License
+### License
 [MIT](https://choosealicense.com/licenses/mit/)
