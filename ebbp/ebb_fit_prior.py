@@ -1,5 +1,5 @@
 """
-ebb_fit_prior  fits a Beta prior estimating the params from the data using 
+ebb_fit_prior : fits a Beta prior by estimating the parameters from the data using 
 method of moments and MLE estimates
 augment : given data and prior, computes the shrinked estimate, credible intervals and 
 augments those in the given dataframe
@@ -15,7 +15,6 @@ from dataclasses import dataclass
 
 import matplotlib.pyplot as plt
 
-#prior = namedtuple('prior', ['alpha','beta'])
 
 @dataclass
 class Beta:
